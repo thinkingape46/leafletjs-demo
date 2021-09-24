@@ -16,7 +16,7 @@ const config = {
   devtool: "eval-cheap-source-map",
   devServer: {
     port: 4002,
-    contentBase: path.resolve(__dirname, "dist"),
+    static: path.resolve(__dirname, "dist"),
     hot: true,
   },
   module: {
@@ -29,16 +29,7 @@ const config = {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: "babel-loader",
-          options: {
-            presets: [
-              [
-                "@babel/preset-env",
-                { useBuiltIns: "usage", corejs: 3, targets: "defaults" },
-              ],
-              "@babel/preset-react",
-            ],
-          },
+          loader: "ts-loader",
         },
       },
     ],
