@@ -6,12 +6,12 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const WebpackManifestPlugin = require("webpack-manifest-plugin");
 
 const config = {
-  entry: "./app/app.js",
+  entry: "./src/app.js",
   output: {
     filename: "myBundle.[hash].js",
     path: path.resolve(__dirname, "dist"),
   },
-  plugins: [new HtmlWebpackPlugin({ template: "./app/index.html" })],
+  plugins: [new HtmlWebpackPlugin({ template: "./src/index.html" })],
   mode: "development",
   devtool: "eval-cheap-source-map",
   devServer: {
@@ -26,13 +26,16 @@ const config = {
         use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
-        test: /\.js$/,
+        test: /\.ts|\.js|\.tsx$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: "ts-loader",
+          loader: "babel-loader",
         },
       },
     ],
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
   },
 };
 

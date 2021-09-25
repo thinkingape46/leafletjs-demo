@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
-    "outDir": "./app/",
+    "outDir": "./dist/",
     "sourceMap": true,
     "noImplicitAny": true,
     "module": "esNext",
+    "removeComments": true,
     "target": "es5",
     "jsx": "react",
     "allowJs": true,
