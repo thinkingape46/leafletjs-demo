@@ -1,15 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import AppRoutes from "./Routes";
 
-function App() {
-  return (
-    <>
-      <p>Hello</p>
-    </>
-  );
-}
-
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<AppRoutes />, document.getElementById("app"));
 
 if (module.hot) {
   module.hot.accept();
