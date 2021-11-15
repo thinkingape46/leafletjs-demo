@@ -8,12 +8,15 @@ const couterSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
-    increase(state) {
-      state.counter = state.counter + 1;
+    increase(state, action) {
+      const { payload } = action;
+      state.counter = state.counter + (payload === undefined ? 1 : payload);
     },
-    decrease(state) {
-      if (state.counter > 0) {
-        state.counter = state.counter - 1;
+    decrease(state, action) {
+      const { payload } = action;
+      const diff = payload === undefined ? 1 : payload;
+      if (state.counter - diff >= 0) {
+        state.counter = state.counter - diff;
       }
     },
     increaseAsync() {},

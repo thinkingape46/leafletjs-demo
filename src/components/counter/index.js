@@ -16,11 +16,11 @@ const Counter = () => {
     <>
       <button onClick={() => dispatch(increase())}>Raise Count</button>
       <button onClick={() => dispatch(decrease())}>Lower Count</button>
-      <button onClick={() => dispatch(increaseAsync())}>
-        Raise Count Async
+      <button onClick={() => dispatch(increaseAsync(4))}>
+        Raise 4 Count Async
       </button>
-      <button onClick={() => dispatch(decreaseAsync())}>
-        Lower Count Async
+      <button onClick={() => dispatch(decreaseAsync(2))}>
+        Lower 2 Count Async
       </button>
       <p>{counter}</p>
     </>

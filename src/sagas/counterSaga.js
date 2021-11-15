@@ -8,14 +8,16 @@ import {
 
 const delay = (time) => new Promise((resolve) => setTimeout(resolve, time));
 
-function* increaseCount() {
+function* increaseCount(action) {
+  const { payload } = action;
   yield delay(1000);
-  yield put(increase());
+  yield put(increase(payload));
 }
 
-function* decreaseCount() {
+function* decreaseCount(action) {
+  const { payload } = action;
   yield delay(1000);
-  yield put(decrease());
+  yield put(decrease(payload));
 }
 
 function* counterSaga() {
