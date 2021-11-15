@@ -12,13 +12,17 @@ const couterSlice = createSlice({
       state.counter = state.counter + 1;
     },
     decrease(state) {
-      state.counter = state.counter - 1;
+      if (state.counter > 0) {
+        state.counter = state.counter - 1;
+      }
     },
+    increaseAsync() {},
+    decreaseAsync() {},
   },
 });
 
 const { actions, reducer } = couterSlice;
 
-export const { increase, decrease } = actions;
+export const { increase, decrease, increaseAsync, decreaseAsync } = actions;
 
 export default reducer;
