@@ -18,6 +18,7 @@ const config = {
     port: 4002,
     static: path.resolve(__dirname, "dist"),
     hot: true,
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -32,10 +33,21 @@ const config = {
           loader: "babel-loader",
         },
       },
+      {
+        test: /\.svg|\.geojson|\.json|\.png|\.jpg|\.mp4|\.gpx$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "assets/[hash].[ext]",
+            },
+          },
+        ],
+      },
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: [".jsx", ".tsx", ".ts", ".js"],
   },
 };
 
