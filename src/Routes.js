@@ -8,6 +8,7 @@ import SpaceStation from "./pages/SpaceStation/index.jsx";
 import EQ from "./pages/EQ/index.jsx";
 import SpeciesData from "./pages/SpeciesData/index.jsx";
 import PolyLine from "./pages/PolyLine/index.jsx";
+import ChoroPleth from "./pages/Choropleth/index.js";
 
 const AppRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const AppRoutes = () => {
         <Route path="/eq" element={<EQ />} />
         <Route path="/species" element={<SpeciesData />} />
         <Route path="/polyline" element={<PolyLine />} />
+        <Route path="/choropleth" element={<ChoroPleth />} />
       </Routes>
     </BrowserRouter>
   );

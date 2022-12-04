@@ -37,11 +37,7 @@ const SpaceStation = () => {
 
     var myIcon = L.icon({
       iconUrl: issSvg,
-      iconSize: [38, 95],
-      iconAnchor: [22, 94],
-      popupAnchor: [-3, -76],
-      shadowSize: [68, 95],
-      shadowAnchor: [22, 94],
+      iconSize: [40, 40],
     });
 
     issMarker.current = L.marker(loaction, {

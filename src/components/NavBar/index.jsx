@@ -36,6 +36,10 @@ const links = [
     href: "/polyline",
     label: "Polyline",
   },
+  {
+    href: "/choropleth",
+    label: "Choropleth",
+  },
 ];
 
 const NavBar = () => {
