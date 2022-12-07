@@ -9,6 +9,8 @@ import geoJSONData from "./data.geojson";
 const ChoroPleth = () => {
   const mapRef = useRef(null);
   const [map, setMap] = useState(null);
+  const [selected, setSelected] = useState(null);
+  const geoJsonRef = useRef(null);
   const gdps = useRef(null);
 
   const setStyle = (feature) => {
@@ -20,8 +22,32 @@ const ChoroPleth = () => {
       color: `hsl(170, 78%, 10%)`,
       opacity: 1,
       strokeWidth: 1,
-      fillOpacity: 0.9,
+      fillOpacity: 0.8,
     };
+  };
+
+  const handleHover = (e) => {
+    const layer = e.target;
+
+    const { name, gdp_md } = layer.feature.properties;
+
+    setSelected({ name, gdp_md });
+
+    layer.setStyle({
+      color: "#fff",
+    });
+    layer.bringToFront();
+  };
+
+  const handleOut = (e) => {
+    geoJsonRef.current.resetStyle(e.target);
+  };
+
+  const onEachFeature = (_, layer) => {
+    layer.on({
+      mouseover: handleHover,
+      mouseout: handleOut,
+    });
   };
 
   const loadGeoJSON = async () => {
@@ -30,7 +56,10 @@ const ChoroPleth = () => {
     const gdpsTemp = data.features.map((feature) => feature.properties.gdp_md);
     gdps.current = gdpsTemp;
     map.setView([-20.47, -58.23], 3);
-    L.geoJson(data, { style: setStyle }).addTo(map);
+    geoJsonRef.current = L.geoJson(data, {
+      style: setStyle,
+      onEachFeature,
+    }).addTo(map);
   };
 
   useEffect(() => {
@@ -44,6 +73,17 @@ const ChoroPleth = () => {
       <div className="container">
         <NavBar />
         <Map mapRef={mapRef} setMap={setMap} />
+        <div className="container__actions">
+          {selected && (
+            <>
+              <p>{selected.name && selected.name}</p>
+              <p>
+                {selected.gdp_md &&
+                  `${(selected.gdp_md / 1000).toFixed(2)} Billion USD`}
+              </p>
+            </>
+          )}
+        </div>
       </div>
     </>
   );

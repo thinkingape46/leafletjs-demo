@@ -6,7 +6,7 @@ import "./index.scss";
 const links = [
   {
     href: "/",
-    label: "Basic Map - setView method",
+    label: "Basic Map",
   },
   {
     href: "/marker",

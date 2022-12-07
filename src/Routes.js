@@ -1,5 +1,6 @@
 import * as React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import BasicMap from "./pages/BasicMap/index.jsx";
 import Marker from "./pages/Marker/index.jsx";
 import FindCoordinate from "./pages/FindCoordinate/index.jsx";
@@ -8,7 +9,7 @@ import SpaceStation from "./pages/SpaceStation/index.jsx";
 import EQ from "./pages/EQ/index.jsx";
 import SpeciesData from "./pages/SpeciesData/index.jsx";
 import PolyLine from "./pages/PolyLine/index.jsx";
-import ChoroPleth from "./pages/Choropleth/index.js";
+import ChoroPleth from "./pages/Choropleth/index.jsx";
 
 const AppRoutes = () => {
   return (

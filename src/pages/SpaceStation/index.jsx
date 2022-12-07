@@ -29,6 +29,7 @@ const SpaceStation = () => {
   };
 
   const issLoc = async () => {
+    console.log(32, map.getZoom());
     if (issMarker.current) {
       issMarker.current.remove();
     }
@@ -49,7 +50,6 @@ const SpaceStation = () => {
 
   const moveIssMarker = async () => {
     const loaction = await fetchIssLocation();
-    console.log(56, loaction);
     setIssCoordsArray((prev) => prev.concat([loaction]));
     issMarker.current.setLatLng(loaction);
   };
